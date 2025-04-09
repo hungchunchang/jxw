@@ -1,0 +1,26 @@
+{
+  "turns": 2,
+  "conversation": [
+    {
+      "timestamp": "2025-04-09 13:54:00",
+      "speaker": "user",
+      "message": "hi"
+    },
+    {
+      "timestamp": "2025-04-09 13:54:01",
+      "speaker": "bot",
+      "message": "歡迎參觀磯小屋！你知道磯小屋最早是作為什麼用途而建立的嗎？"
+    },
+    {
+      "timestamp": "2025-04-09 13:54:08",
+      "speaker": "user",
+      "message": "你好"
+    },
+    {
+      "timestamp": "2025-04-09 13:54:10",
+      "speaker": "bot",
+      "message": "你知道磯小屋在臺灣農業發展史上扮演什麼重要角色嗎？"
+    }
+  ],
+  "is_ended": false
+}
