@@ -24,7 +24,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutorService;
 
 public class HttpHandler implements HttpHandlerInterface {
-    private static final String BASE_URL = "http://192.168.111.175:8080/api/";
+    //"http://192.168.111.175:8080/api/";
+    private static final String BASE_URL = "https://8b9b-140-112-92-133.ngrok-free.app/api/";
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private final ExecutorService executorService;
     private DataRepository dataRepository;
