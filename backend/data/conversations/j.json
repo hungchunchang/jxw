@@ -1,0 +1,16 @@
+{
+  "turns": 1,
+  "conversation": [
+    {
+      "timestamp": "2025-04-09 16:37:43",
+      "speaker": "user",
+      "message": "hi"
+    },
+    {
+      "timestamp": "2025-04-09 16:37:45",
+      "speaker": "bot",
+      "message": "嗨，我是阿蓬！剛剛參觀完磯永吉小屋，接下來讓我們一起回顧一下今天的學習吧！請問，磯永吉小屋是在哪一年建立的呢？"
+    }
+  ],
+  "is_ended": false
+}

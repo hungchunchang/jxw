@@ -8,7 +8,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.jxw.objects.ActionResponse;
+import com.example.jxw.objects.StatusUpdate;
 import com.example.jxw.repository.DataRepository;
 
 import org.json.JSONException;
@@ -28,6 +28,7 @@ public class HttpHandler implements HttpHandlerInterface {
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private final ExecutorService executorService;
     private DataRepository dataRepository;
+    private volatile boolean cancelRequests = false;
 
     public HttpHandler(ExecutorService executorService) {
         this.executorService = executorService;
@@ -50,6 +51,7 @@ public class HttpHandler implements HttpHandlerInterface {
 
     public void sendRequest(String message, String imgBase64, String userName,
                             String userId, String personality, String channel) {
+        resetCancelFlag();
         JSONObject data = new JSONObject();
         try {
             data.put("user_id", userId);
@@ -69,17 +71,40 @@ public class HttpHandler implements HttpHandlerInterface {
 
     private void sendHttpRequest(String url, JSONObject data) {
         executorService.execute(() -> {
+            if (cancelRequests) {
+                Log.d(TAG, "Request cancelled before execution: " + url);
+                return;
+            }
+
             HttpURLConnection connection = null;
             try {
+                // Check again before setting up connection
+                if (cancelRequests) {
+                    Log.d(TAG, "Request cancelled before connection setup: " + url);
+                    return;
+                }
                 connection = setupConnection(url);
                 sendData(connection, data);
+
+                // Check again before processing response
+                if (cancelRequests) {
+                    Log.d(TAG, "Request cancelled before processing response: " + url);
+                    connection.disconnect();
+                    return;
+                }
 
                 int responseCode = connection.getResponseCode();
                 Log.d(TAG, "HTTP Response Code: " + responseCode);
 
                 if (dataRepository != null && !url.endsWith("save_pic")) {
-                    ActionResponse response = getActionResponse(connection);
-                    mainHandler.post(() -> dataRepository.updateActionResponse(response));
+                    StatusUpdate statusUpdate = getStatusHttp(connection);
+
+                    if (!cancelRequests) {
+                        mainHandler.post(() -> dataRepository.updateStatus(statusUpdate));
+                    } else {
+                        Log.d(TAG, "Response handling cancelled: " + url);
+                    }
+                    mainHandler.post(() -> dataRepository.updateStatus(statusUpdate));
                 }
             } catch (Exception e) {
                 Log.e(TAG, "Request failed", e);
@@ -103,8 +128,15 @@ public class HttpHandler implements HttpHandlerInterface {
             writer.flush();
         }
     }
+    public void cancelAllRequests() {
+        Log.d(TAG, "Cancelling all pending HTTP requests");
+        cancelRequests = true;
+    }
+    public void resetCancelFlag() {
+        cancelRequests = false;
+    }
 
-    private static @NonNull ActionResponse getActionResponse(HttpURLConnection connection) throws IOException, JSONException {
+    private static @NonNull StatusUpdate getStatusHttp(HttpURLConnection connection) throws IOException, JSONException {
         StringBuilder response = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
             String responseLine;
@@ -115,16 +147,16 @@ public class HttpHandler implements HttpHandlerInterface {
         String jsonString = response.toString();
         JSONObject jsonResponse = new JSONObject(jsonString);
 
-        String status = "";
-
+        String status = "speaking";
+        //這邊用reset的話，會直接跳走，所以要把onTTsEnded再回到主頁
         if(jsonResponse.optBoolean("is_ended")){
-            status = "reset";
+            status = "ending";
         }
         Log.d(TAG,"Status is"+status);
 
-        String emotion = jsonResponse.optString("emotion", "neutral");
         String question = jsonResponse.optString("question", "");
+        String emotion = jsonResponse.optString("emotion", "neutral");
 
-        return new ActionResponse(status, emotion, question);
+        return new StatusUpdate(status, question, emotion);
     }
 }

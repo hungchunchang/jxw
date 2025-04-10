@@ -7,7 +7,6 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.jxw.objects.ActionResponse;
 import com.example.jxw.objects.StatusUpdate;
 import com.example.jxw.util.HttpHandlerInterface;
 
@@ -16,7 +15,6 @@ import java.util.concurrent.ExecutorService;
 
 public class DataRepository {
     private final HttpHandlerInterface httpHandler;
-    private final MutableLiveData<ActionResponse> actionResponseLiveData = new MutableLiveData<>();
     private final MutableLiveData<StatusUpdate> statusLiveData = new MutableLiveData<>();
     private final MutableLiveData<Boolean> switchToUserFragment = new MutableLiveData<>();
 
@@ -72,23 +70,23 @@ public class DataRepository {
         Log.d(TAG, "DataRepository: Performing complete cleanup");
 
         // Reset all LiveData objects to null or initial values
-        actionResponseLiveData.setValue(null);
         statusLiveData.setValue(new StatusUpdate("reset", null));
         switchToUserFragment.setValue(false);
 
-        // If you have any ongoing operations or threads, cancel them here
+        // Cancel any ongoing HTTP requests
+        if (httpHandler != null) {
+            httpHandler.cancelAllRequests();
+        }
+
+        // Reset user information
+        userName = null;
+        userId = null;
+        personality = null;
+        channel = null;
+
+        Log.d(TAG, "DataRepository cleanup completed");
     }
 
-
-    // 更新 `ActionResponse` 的方法
-    public void updateActionResponse(ActionResponse actionResponse) {
-        actionResponseLiveData.postValue(actionResponse); // 更新數據
-    }
-
-    // 供 `ViewModel` 獲取 `LiveData`
-    public LiveData<ActionResponse> getActionResponseLiveData() {
-        return actionResponseLiveData;
-    }
 
     // 提供單一的 LiveData 給外部觀察
     public LiveData<StatusUpdate> getStatusLiveData() {
@@ -96,14 +94,9 @@ public class DataRepository {
     }
 
     // 更新狀態並選擇性地包含結果字串
-    public void updateStatus(String status, String resultString) {
-        Log.d(TAG, "status updated to" + status);
-        statusLiveData.postValue(new StatusUpdate(status, resultString));
-    }
-
-    // 如果不需要 resultString，可以使用此方法
-    public void updateStatus(String status) {
-        updateStatus(status, null);
+    public void updateStatus(StatusUpdate statusUpdate) {
+        Log.d(TAG, "status updated to " + statusUpdate.getStatus());
+        statusLiveData.postValue(statusUpdate);
     }
 
     // 提供 LiveData 給外部觀察

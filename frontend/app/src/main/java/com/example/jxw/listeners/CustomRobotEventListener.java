@@ -3,6 +3,7 @@ package com.example.jxw.listeners;
 import android.content.ComponentName;
 import android.util.Log;
 
+import com.example.jxw.objects.StatusUpdate;
 import com.example.jxw.repository.DataRepository;
 import com.example.jxw.util.RobotEventCallback;
 import com.nuwarobotics.service.agent.NuwaRobotAPI;
@@ -18,7 +19,6 @@ public class CustomRobotEventListener implements RobotEventListener {
 
     private final NuwaRobotAPI mRobotAPI;
     private final DataRepository dataRepository;
-    private final RobotEventCallback callback;
 
     // Unity Face 回調，用來監聽機器人臉部觸摸事件
     private final UnityFaceCallback mUnityFaceCallback = new UnityFaceCallback() {
@@ -64,7 +64,6 @@ public class CustomRobotEventListener implements RobotEventListener {
     public CustomRobotEventListener(NuwaRobotAPI robotAPI, DataRepository dataRepository, RobotEventCallback callback) {
         this.mRobotAPI = robotAPI;
         this.dataRepository = dataRepository;
-        this.callback = callback;
         CustomVoiceEventListener customVoiceEventListener = new CustomVoiceEventListener(dataRepository);
         mRobotAPI.registerVoiceEventListener(customVoiceEventListener);
     }
@@ -91,6 +90,12 @@ public class CustomRobotEventListener implements RobotEventListener {
     @Override
     public void onCompleteOfMotionPlay(String s) {
         Log.d(TAG, "onCompleteOfMotionPlay: " + s);
+
+        // 检查是否是告别动作完成
+        if (s != null && s.equals("666_RE_Bye")) {
+            // 动作完成后执行重置
+            dataRepository.updateStatus(new StatusUpdate("reset"));
+        }
 
     }
 
@@ -123,7 +128,7 @@ public class CustomRobotEventListener implements RobotEventListener {
 
             Log.d(TAG, "onLongPress: Interrupting and resetting robot.");
             try {
-                dataRepository.updateStatus("reset");  // 重置機器人狀態
+                dataRepository.updateStatus(new StatusUpdate("reset"));  // 重置機器人狀態
             } catch (Exception e) {
                 e.printStackTrace();
             }

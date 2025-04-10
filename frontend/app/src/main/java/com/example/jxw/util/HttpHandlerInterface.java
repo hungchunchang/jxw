@@ -14,4 +14,6 @@ public interface HttpHandlerInterface {
 
 
     void sendContinuousImage(String userName, String userId,String base64Image);
+
+    void cancelAllRequests();
 }

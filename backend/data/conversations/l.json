@@ -1,0 +1,116 @@
+{
+  "turns": 7,
+  "conversation": [
+    {
+      "timestamp": "2025-04-09 17:08:03",
+      "speaker": "user",
+      "message": "hi"
+    },
+    {
+      "timestamp": "2025-04-09 17:08:05",
+      "speaker": "bot",
+      "message": "你好，我是阿蓬，今天會帶著同學們回顧一下磯永吉小屋的參觀經驗喔！首先，請問磯永吉教授有什麼重要貢獻呢？"
+    },
+    {
+      "timestamp": "2025-04-09 17:08:11",
+      "speaker": "user",
+      "message": "不知道"
+    },
+    {
+      "timestamp": "2025-04-09 17:08:13",
+      "speaker": "bot",
+      "message": "磯永吉教授和末永仁合作，成功培育出蓬萊米，大大提高了台灣的稻米產量哦！接下來，請問磯小屋在哪一年被指定為古蹟呢？"
+    },
+    {
+      "timestamp": "2025-04-09 17:08:59",
+      "speaker": "user",
+      "message": "不知道"
+    },
+    {
+      "timestamp": "2025-04-09 17:08:59",
+      "speaker": "bot",
+      "message": "抱歉，我遇到了一些問題，請稍後再試。"
+    },
+    {
+      "timestamp": "2025-04-09 17:09:11",
+      "speaker": "user",
+      "message": "你說什麼"
+    },
+    {
+      "timestamp": "2025-04-09 17:09:11",
+      "speaker": "bot",
+      "message": "抱歉，我遇到了一些問題，請稍後再試。"
+    },
+    {
+      "timestamp": "2025-04-09 17:10:40",
+      "speaker": "user",
+      "message": "Hello Kebbi"
+    },
+    {
+      "timestamp": "2025-04-09 17:10:40",
+      "speaker": "bot",
+      "message": "抱歉，我遇到了一些問題，請稍後再試。"
+    },
+    {
+      "timestamp": "2025-04-09 17:11:20",
+      "speaker": "user",
+      "message": "好的"
+    },
+    {
+      "timestamp": "2025-04-09 17:11:22",
+      "speaker": "bot",
+      "message": "你好，我是阿蓬，今天會帶著同學們回顧一下磯永吉小屋的參觀經驗喔！請問磯永吉教授有什麼重要貢獻呢？"
+    },
+    {
+      "timestamp": "2025-04-09 17:11:40",
+      "speaker": "user",
+      "message": "黃明志來水"
+    },
+    {
+      "timestamp": "2025-04-09 17:11:41",
+      "speaker": "bot",
+      "message": "那麼今天參觀中有沒有讓你印象最深刻的事情呢？"
+    },
+    {
+      "timestamp": "2025-04-09 17:11:53",
+      "speaker": "user",
+      "message": "沒有"
+    },
+    {
+      "timestamp": "2025-04-09 17:11:55",
+      "speaker": "bot",
+      "message": "你會想要再來參觀，或推薦家人朋友來參觀嗎？"
+    },
+    {
+      "timestamp": "2025-04-09 17:12:11",
+      "speaker": "user",
+      "message": "會喔"
+    },
+    {
+      "timestamp": "2025-04-09 17:12:12",
+      "speaker": "bot",
+      "message": "請問同學是否有其他問題，或是對於展覽的建議嗎？"
+    },
+    {
+      "timestamp": "2025-04-09 17:12:59",
+      "speaker": "user",
+      "message": "打開"
+    },
+    {
+      "timestamp": "2025-04-09 17:13:01",
+      "speaker": "bot",
+      "message": "請問同學是否有其他問題，或是對於展覽的建議嗎？"
+    },
+    {
+      "timestamp": "2025-04-09 17:14:23",
+      "speaker": "user",
+      "message": "好好好好好"
+    },
+    {
+      "timestamp": "2025-04-09 17:14:23",
+      "speaker": "bot",
+      "message": "謝謝你們今天來參觀！期待下次再見！"
+    }
+  ],
+  "is_ended": false
+}

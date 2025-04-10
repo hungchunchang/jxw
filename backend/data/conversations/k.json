@@ -1,0 +1,96 @@
+{
+  "turns": 7,
+  "conversation": [
+    {
+      "timestamp": "2025-04-09 16:57:26",
+      "speaker": "user",
+      "message": "hi"
+    },
+    {
+      "timestamp": "2025-04-09 16:57:30",
+      "speaker": "bot",
+      "message": "你好！我是阿蓬，歡迎你參觀完磯永吉小屋。我接下來會問你幾個簡單的問題哦~首先，你知道磯永吉小屋的建立時間是哪一年嗎？"
+    },
+    {
+      "timestamp": "2025-04-09 16:57:56",
+      "speaker": "user",
+      "message": "1885年"
+    },
+    {
+      "timestamp": "2025-04-09 16:57:58",
+      "speaker": "bot",
+      "message": "其實磯永吉小屋是建立於1925年喔！沒關係，很高興你有來參觀。那麼，你知道誰被稱為『蓬萊米之父』嗎？"
+    },
+    {
+      "timestamp": "2025-04-09 16:58:16",
+      "speaker": "user",
+      "message": "不知道"
+    },
+    {
+      "timestamp": "2025-04-09 16:58:19",
+      "speaker": "bot",
+      "message": "沒問題，磯永吉被尊稱為『蓬萊米之父』，因為他在臺灣成功培育出蓬萊米品種，對農業有很大貢獻呢！那麼，你還記得磯永吉小屋位於台大的哪一個地方嗎？"
+    },
+    {
+      "timestamp": "2025-04-09 16:58:41",
+      "speaker": "user",
+      "message": "不知道"
+    },
+    {
+      "timestamp": "2025-04-09 16:58:43",
+      "speaker": "bot",
+      "message": "沒關係，那麼你會想要再來參觀，或者推薦家人朋友來參觀嗎？"
+    },
+    {
+      "timestamp": "2025-04-09 16:58:54",
+      "speaker": "user",
+      "message": "還好啊"
+    },
+    {
+      "timestamp": "2025-04-09 16:58:55",
+      "speaker": "bot",
+      "message": "今天參觀中有什麼事情讓你印象最深刻呢？"
+    },
+    {
+      "timestamp": "2025-04-09 16:59:11",
+      "speaker": "user",
+      "message": "沒有"
+    },
+    {
+      "timestamp": "2025-04-09 16:59:12",
+      "speaker": "bot",
+      "message": "那麼還有什麼其他問題，或是對於展覽的建議嗎？"
+    },
+    {
+      "timestamp": "2025-04-09 16:59:25",
+      "speaker": "user",
+      "message": "葉沒有"
+    },
+    {
+      "timestamp": "2025-04-09 16:59:26",
+      "speaker": "bot",
+      "message": "謝謝小組今天來參觀。"
+    },
+    {
+      "timestamp": "2025-04-09 16:59:36",
+      "speaker": "user",
+      "message": "好"
+    },
+    {
+      "timestamp": "2025-04-09 16:59:37",
+      "speaker": "bot",
+      "message": "很高興聽到你的回應！如果沒有其他問題，那麼我就在這裡結束對話了。謝謝小組今天來參觀！"
+    },
+    {
+      "timestamp": "2025-04-09 17:07:51",
+      "speaker": "user",
+      "message": "hi"
+    },
+    {
+      "timestamp": "2025-04-09 17:07:52",
+      "speaker": "bot",
+      "message": "你好！今天參觀中有什麼事情讓你印象最深刻呢？"
+    }
+  ],
+  "is_ended": true
+}

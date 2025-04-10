@@ -2,6 +2,7 @@ package com.example.jxw.listeners;
 
 import android.util.Log;
 
+import com.example.jxw.objects.StatusUpdate;
 import com.example.jxw.repository.DataRepository;
 import com.nuwarobotics.service.agent.VoiceEventListener;
 import com.nuwarobotics.service.agent.VoiceResultJsonParser;
@@ -27,9 +28,9 @@ public class CustomVoiceEventListener implements VoiceEventListener {
     public void onTTSComplete(boolean isError) {
         Log.d(TAG, "TTS Complete, starting to listen again");
         if (isError) {
-            dataRepository.updateStatus("error");
+            dataRepository.updateStatus(new StatusUpdate("error"));
         } else {
-            dataRepository.updateStatus("listening");
+            dataRepository.updateStatus(new StatusUpdate("listening"));
         }
     }
 
@@ -50,12 +51,12 @@ public class CustomVoiceEventListener implements VoiceEventListener {
 
         if (isError || result_string == null || result_string.trim().isEmpty()) {
             Log.e(TAG, "Speech to text result is empty or error occurred, restarting listening");
-            new Thread(() -> dataRepository.updateStatus("listening")).start();
+            new Thread(() -> dataRepository.updateStatus(new StatusUpdate("listening"))).start();
             return;
         }
 
         // 語音轉文字成功後，設定機器人進入思考狀態
-        dataRepository.updateStatus("thinking", result_string);
+        dataRepository.updateStatus(new StatusUpdate("thinking"));
     }
 
     @Override
@@ -76,7 +77,7 @@ public class CustomVoiceEventListener implements VoiceEventListener {
 
         if (isError) {
             Log.e(TAG, "MixUnderstand error occurred, restarting listening");
-            new Thread(() -> dataRepository.updateStatus("listening")).start();
+            new Thread(() -> dataRepository.updateStatus(new StatusUpdate("listening"))).start();
             return;
         }
 
@@ -84,7 +85,7 @@ public class CustomVoiceEventListener implements VoiceEventListener {
             Log.e(TAG, "MixUnderstand result is empty, restarting listening");
             new Thread(() -> {
                 if (dataRepository != null) {
-                    dataRepository.updateStatus("listening");
+                    dataRepository.updateStatus(new StatusUpdate("listening"));
                 } else {
                     Log.e(TAG, "robotViewModel is null, cannot set status to Listening");
                 }
@@ -95,11 +96,11 @@ public class CustomVoiceEventListener implements VoiceEventListener {
         // 檢查是否包含拍照指令
         if (result_string.contains("你看") || result_string.contains("這是什麼")) {
             Log.d(TAG, "Taking picture based on the command");
-            dataRepository.updateStatus("takePicture", result_string);
+            dataRepository.updateStatus(new StatusUpdate("takePicture", result_string));
 
         } else {
             Log.d(TAG, "Sending message to server");
-            dataRepository.updateStatus("thinking",result_string);
+            dataRepository.updateStatus(new StatusUpdate("thinking",result_string));
         }
     }
 

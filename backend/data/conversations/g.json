@@ -1,0 +1,16 @@
+{
+  "turns": 1,
+  "conversation": [
+    {
+      "timestamp": "2025-04-09 17:24:57",
+      "speaker": "user",
+      "message": "hi"
+    },
+    {
+      "timestamp": "2025-04-09 17:24:59",
+      "speaker": "bot",
+      "message": "同學你好，我是阿蓬，是負責與大家互動的小機器人。今天我們來回顧磯永吉小屋的參觀經驗。請問你知道磯小屋是什麼時候建造的嗎？"
+    }
+  ],
+  "is_ended": false
+}

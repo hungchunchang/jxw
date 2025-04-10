@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.jxw.R;
+import com.example.jxw.objects.StatusUpdate;
 import com.example.jxw.util.RecordHandler;
 import com.example.jxw.viewmodel.RobotViewModel;
 import com.example.jxw.viewmodel.SharedViewModel;
@@ -49,10 +50,8 @@ public class VideoFragment extends Fragment {
         //開始錄影
         Log.d("Recording", "[VideoFragment]Starting recording in VideoFragment");
 //        recordHandler.startRecording(getViewLifecycleOwner());
-
+        // 只要從 RobotViewModel 觀察與
         setupVideoCompletionListener();
-        observeActionResponse();
-        observeStatusUpdate();
         observeEmotionChanges();
         observeTTSState();
         // 開啟第一次對話
@@ -60,29 +59,6 @@ public class VideoFragment extends Fragment {
         return view;
     }
 
-    // 觀察 ActionResponse 的變化，根據數據變化更新 UI
-    private void observeActionResponse() {
-        robotViewModel.getActionResponse().observe(getViewLifecycleOwner(), actionResponse -> {
-            if (actionResponse != null) {
-                // 更新 UI 和播放影片
-                Log.d(TAG,"Received response: " + actionResponse.getTalk() +actionResponse.getEmotion());
-//                Toast.makeText(getContext(), "Received response: " + actionResponse.getTalk(), Toast.LENGTH_LONG).show();
-
-                // 通知 RobotViewModel 進行講話
-                robotViewModel.setStatus("speaking", actionResponse.getTalk(), actionResponse.getEmotion());
-            }
-        });
-    }
-
-    private void observeStatusUpdate(){
-        robotViewModel.getStatusLiveData().observe(getViewLifecycleOwner(), statusUpdate -> {
-            if (statusUpdate != null) {
-                // 處理語音狀態更新
-                Log.d(TAG, "Status Update: " + statusUpdate.getStatus());
-                robotViewModel.setStatus(statusUpdate.getStatus(), statusUpdate.getResultString());
-            }
-        });
-    }
 
     // 透過 LiveData 觀察來處理影片播放
     private void observeEmotionChanges() {
@@ -136,15 +112,46 @@ public class VideoFragment extends Fragment {
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.d(TAG, "VideoFragment onDestroyView called - performing cleanup");
+
+        // Stop video playback
+        if (videoView != null) {
+            videoView.stopPlayback();
+            videoView = null; // Allow for garbage collection
+        }
+
+        // Remove observers to prevent memory leaks
+        if (robotViewModel != null) {
+            // Remove any observers that might prevent garbage collection
+            robotViewModel.getStatusLiveData().removeObservers(getViewLifecycleOwner());
+            robotViewModel.getEmotionLiveData().removeObservers(getViewLifecycleOwner());
+            robotViewModel.getTtsPlayingState().removeObservers(getViewLifecycleOwner());
+        }
+
+        if (sharedViewModel != null) {
+            sharedViewModel.getEmotionVideoMap().removeObservers(this);
+        }
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d(TAG, "VideoFragment onDestroy called");
-        // 釋放資源
+        Log.d(TAG, "VideoFragment onDestroy called - finalizing cleanup");
+
+        // Ensure recordHandler is destroyed
         if (recordHandler != null) {
             recordHandler.destroy();
-            Log.d(TAG, "RecordHandler destroyed");
+            recordHandler = null;
         }
-        robotViewModel.interruptAndReset();
-        Log.d(TAG, "Robot reset completed");
+
+        // Ensure robot is fully reset
+        if (robotViewModel != null) {
+            robotViewModel.interruptAndReset();
+        }
+
+        // Force garbage collection
+        System.gc();
     }
 }

@@ -1,13 +1,11 @@
 package com.example.jxw.viewmodel;
 
-import android.os.Handler;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.jxw.objects.ActionResponse;
 import com.example.jxw.objects.StatusUpdate;
 import com.example.jxw.repository.DataRepository;
 import com.example.jxw.util.CameraHandler;
@@ -27,6 +25,7 @@ public class RobotViewModel extends ViewModel {
     private final DataRepository dataRepository;
     private String personalityType = "e";
     private final String TAG = "RobotViewModel";
+    private boolean isEnding = false;
 
     public RobotViewModel(NuwaRobotAPI robotAPI, DataRepository dataRepository, CameraHandler cameraHandler, HashMap<String, String> emotionVideoMap) {
         this.mRobotAPI = robotAPI;
@@ -35,6 +34,12 @@ public class RobotViewModel extends ViewModel {
         this.motionMap = new HashMap<>();
         initializeMotionMap();
         this.statusLiveData = dataRepository.getStatusLiveData();
+        this.statusLiveData.observeForever(statusUpdate -> {
+            if (statusUpdate != null) {
+                // 调用自己的 setStatus 方法来处理状态更新
+                setStatus(statusUpdate.getStatus(), statusUpdate.getResultString());
+            }
+        });
 
     }
 
@@ -51,6 +56,7 @@ public class RobotViewModel extends ViewModel {
         motionMap.put("takePicture", "");
         motionMap.put("error", "");
         motionMap.put("default", "");
+        motionMap.put("bye", "666_RE_Bye");
     }
 
     // 獲取完整的表情鍵值
@@ -69,12 +75,8 @@ public class RobotViewModel extends ViewModel {
     }
 
     // LiveData
-    // // 收到訊息
-    public LiveData<ActionResponse> getActionResponse() {
-        return dataRepository.getActionResponseLiveData();
-    }
 
-    // // 收到訊息
+    // 收到訊息
     public LiveData<StatusUpdate> getStatusLiveData() {
         return dataRepository.getStatusLiveData();
     }
@@ -85,16 +87,10 @@ public class RobotViewModel extends ViewModel {
     }
 
 
-
     // //Emotion LiveData
     private final MutableLiveData<String> emotionLiveData = new MutableLiveData<>();
     public LiveData<String> getEmotionLiveData() {
         return emotionLiveData;
-    }
-
-    // 用於直接設置情緒表情（用於 ActionResponse 的情況）
-    public void setEmotion(String emotion) {
-        emotionLiveData.setValue(emotion);
     }
 
     public LiveData<Boolean> getTtsPlayingState() {
@@ -103,98 +99,92 @@ public class RobotViewModel extends ViewModel {
 
     // // 在應用程式開始後，送出第一條訊息
     public void setInitialData(String userName, String userId, String personality, String channel) {
-        // 把人格儲存在 RobotViewModel中：只有內外向
-        setMBTIPersonality(personality);
-
         //把使用者的基本資料儲存在 DataRepository 中
         dataRepository.setUserInfo(userName, userId, personality, channel);
-    }
-
-    // 處理 MBTI 性格類型
-    private void setMBTIPersonality(String mbtiType) {
-        if (mbtiType != null && !mbtiType.isEmpty()) {
-            // 取第一個字母 E 或 I 來決定性格類型
-            String firstLetter = mbtiType.substring(0, 1).toUpperCase();
-            this.personalityType = firstLetter.equals("E") ? "e" : "i";
-            Log.d(TAG, "Personality set to: " + this.personalityType + " from MBTI: " + mbtiType);
-        } else {
-            // 默認為內向
-            this.personalityType = "e";
-            Log.d(TAG, "Invalid MBTI type, defaulting to introvert");
-        }
     }
 
     // 機器人行為控制：包涵一、二、三個參數的重載
     // 基本的狀態設置
     // 帶結果字符串的狀態設置
     public void setStatus(String status, String resultString) {
-        setStatus(status, resultString, null);
+        setStatus(new StatusUpdate(status, resultString));
     }
 
     // 說話狀態的特殊處理（帶情緒）
-    public void setStatus(String status, String resultString, String emotion) {
-        Log.d(TAG, "Status: " + status); // 通用的狀態記錄
+    public void setStatus(StatusUpdate statusUpdate) {
+        Log.d(TAG, "Status: " + statusUpdate.getStatus()); // 通用的狀態記錄
 
         // 1. 播放對應動作
-        String actualMotion = motionMap.getOrDefault(status, "");
+        String actualMotion = motionMap.getOrDefault(statusUpdate.getStatus(), "");
         if (actualMotion != null && !actualMotion.isEmpty()) {
-            if (!"thinking".equals(status) || Math.random() > 0.5) {
+            if (!"thinking".equals(statusUpdate.getStatus()) || Math.random() > 0.5) {
                 mRobotAPI.motionPlay(actualMotion, true);
             }
         }
         // 2. 播放對應表情影片
-        if (status.equals("speaking") && emotion != null) {
+        if (statusUpdate.getStatus().equals("speaking") && statusUpdate.getEmotion() != null) {
             // Speaking 狀態且有情緒時使用情緒表情
-            String fullEmotionKey = getFullEmotionKey(emotion);
+            String fullEmotionKey = getFullEmotionKey(statusUpdate.getEmotion());
             emotionLiveData.setValue(fullEmotionKey);
         } else {
             // 其他狀態使用狀態對應的表情
-            String fullEmotionKey = getFullEmotionKey(status);
+            String fullEmotionKey = getFullEmotionKey(statusUpdate.getStatus());
             emotionLiveData.setValue(fullEmotionKey);
         }
 
-        switch (status) {
+        switch (statusUpdate.getStatus()) {
             case "idling":
                 Log.d(TAG, "Robot is idling.");
                 break;
 
             case "thinking":
-                Log.d(TAG, "Send result to server. Result: " + resultString);
+                Log.d(TAG, "Send result to server. Result: " + statusUpdate.getResultString());
                 mRobotAPI.stopListen();
-                dataRepository.sendDataViaHttp(resultString, "");
+                dataRepository.sendDataViaHttp(statusUpdate.getResultString(), "");
                 break;
 
             case "listening":
                 Log.d(TAG, "Start Mix Understanding.");
                 ttsPlayingLiveData.setValue(false);
-                mRobotAPI.startMixUnderstand();
+                if(isEnding){
+                    String byeMotion = motionMap.getOrDefault("bye", "");
+                    // 播放动作 - 完成后会触发 onCompleteOfMotionPlay 回调
+                    mRobotAPI.motionPlay(byeMotion, true);
+                } else {
+                    mRobotAPI.startMixUnderstand();
+                }
                 break;
 
             case "speaking":
-                Log.d(TAG, "Start TTS: " + resultString);
+                Log.d(TAG, "Start TTS: " + statusUpdate.getResultString());
                 ttsPlayingLiveData.setValue(true);
-                mRobotAPI.startTTS(resultString);
+                mRobotAPI.startTTS(statusUpdate.getResultString());
                 break;
 
             case "takingPicture":
-                Log.d(TAG, "Taking picture with description: " + resultString);
-                cameraHandler.takePicture(resultString);
+                Log.d(TAG, "Taking picture with description: " + statusUpdate.getResultString());
+                cameraHandler.takePicture(statusUpdate.getResultString());
                 break;
 
             case "error":
                 Log.d(TAG, "An error occurred.");
                 break;
 
+            case "ending":
+                Log.d(TAG, "Ending the conversation.");
+                isEnding = true;
+                setStatus(new StatusUpdate("speaking", statusUpdate.getResultString(),statusUpdate.getEmotion()));
+                break;
             case "reset":
                 Log.d(TAG, "Resetting robot actions.");
                 // 發出切換到 UserFragment 的請求
+                isEnding = false;
                 dataRepository.requestSwitchToUserFragment();
-
                 interruptAndReset();
                 break;
 
             default:
-                Log.w(TAG, "Unknown status: " + status);
+                Log.w(TAG, "Unknown status: " + statusUpdate.getStatus());
                 break;
         }
     }
@@ -225,9 +215,15 @@ public class RobotViewModel extends ViewModel {
         System.gc();
     }
     public void cleanupObservers() {
-        // 移除所有永久觀察者
-        if (dataRepository != null) {
-            // 如果你使用了 observeForever，需要在這裡移除
-        }
+        Log.d(TAG, "Cleaning up all observers and listeners");
+
+        // If you have any observers or listeners that were added with observeForever
+        // make sure to remove them here to prevent memory leaks
+
+        // Example:
+        // if (someForeverObserver != null) {
+        //     someLiveData.removeObserver(someForeverObserver);
+        //     someForeverObserver = null;
+        // }
     }
 }
