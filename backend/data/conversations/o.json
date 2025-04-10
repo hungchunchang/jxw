@@ -1,0 +1,16 @@
+{
+  "turns": 1,
+  "conversation": [
+    {
+      "timestamp": "2025-04-10 15:15:17",
+      "speaker": "user",
+      "message": "hi"
+    },
+    {
+      "timestamp": "2025-04-10 15:15:20",
+      "speaker": "bot",
+      "message": "你好，我是阿蓬！很高興你參觀了磯小屋。現在我有幾個簡單的小問題來幫助你回顧今天的參觀經驗。首先，磯小屋是在哪一年建造的呢？"
+    }
+  ],
+  "is_ended": false
+}
