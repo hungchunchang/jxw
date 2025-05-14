@@ -104,11 +104,11 @@ public class MainActivity extends AppCompatActivity implements RobotEventCallbac
                 tapToStartTextView.requestLayout();  // 強制重新佈局
             }
 
-            // 顯示 Fragment 容器並加載 LoginFragment
+            // 顯示 Fragment 容器並加載 UserFragment
             fragmentContainer.setVisibility(View.VISIBLE);
 
             // 使用 FragmentTransaction 轉場
-            loadLoginFragment();
+            loadUserFragment();
         });
 
         // 初始化 Handler 以在主線程處理任務
@@ -225,10 +225,10 @@ public class MainActivity extends AppCompatActivity implements RobotEventCallbac
         }
     }
 
-    private void loadLoginFragment() {
+    private void loadUserFragment() {
         // 創建並執行 FragmentTransaction 來替換畫面
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, new LoginFragment());  // 替換為 LoginFragment
+        transaction.replace(R.id.fragment_container, new UserFragment());  // 替換為 UserFragment
         transaction.addToBackStack(null);  // 加入返回棧
         transaction.commit();
     }

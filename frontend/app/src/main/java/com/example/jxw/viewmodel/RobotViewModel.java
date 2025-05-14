@@ -17,7 +17,6 @@ import java.util.Map;
 public class RobotViewModel extends ViewModel {
     private final NuwaRobotAPI mRobotAPI;
     private final Map<String, String> motionMap;
-    private final LiveData<StatusUpdate> statusLiveData;
     private final MutableLiveData<Boolean> ttsPlayingLiveData = new MutableLiveData<>();
 
 
@@ -27,17 +26,17 @@ public class RobotViewModel extends ViewModel {
     private final String TAG = "RobotViewModel";
     private boolean isEnding = false;
 
-    public RobotViewModel(NuwaRobotAPI robotAPI, DataRepository dataRepository, CameraHandler cameraHandler, HashMap<String, String> emotionVideoMap) {
+    public RobotViewModel(NuwaRobotAPI robotAPI, DataRepository dataRepository, CameraHandler cameraHandler) {
         this.mRobotAPI = robotAPI;
         this.dataRepository = dataRepository;
         this.cameraHandler = cameraHandler;
         this.motionMap = new HashMap<>();
         initializeMotionMap();
-        this.statusLiveData = dataRepository.getStatusLiveData();
-        this.statusLiveData.observeForever(statusUpdate -> {
+        LiveData<StatusUpdate> statusLiveData = dataRepository.getStatusLiveData();
+        statusLiveData.observeForever(statusUpdate -> {
             if (statusUpdate != null) {
                 // 调用自己的 setStatus 方法来处理状态更新
-                setStatus(statusUpdate.getStatus(), statusUpdate.getResultString());
+                setStatus(statusUpdate);
             }
         });
 
@@ -98,19 +97,12 @@ public class RobotViewModel extends ViewModel {
     }
 
     // // 在應用程式開始後，送出第一條訊息
-    public void setInitialData(String userName, String userId, String personality, String channel) {
+    public void setInitialData(String userName, String userId) {
         //把使用者的基本資料儲存在 DataRepository 中
-        dataRepository.setUserInfo(userName, userId, personality, channel);
+        dataRepository.setUserInfo(userName, userId);
     }
 
-    // 機器人行為控制：包涵一、二、三個參數的重載
     // 基本的狀態設置
-    // 帶結果字符串的狀態設置
-    public void setStatus(String status, String resultString) {
-        setStatus(new StatusUpdate(status, resultString));
-    }
-
-    // 說話狀態的特殊處理（帶情緒）
     public void setStatus(StatusUpdate statusUpdate) {
         Log.d(TAG, "Status: " + statusUpdate.getStatus()); // 通用的狀態記錄
 
@@ -122,15 +114,15 @@ public class RobotViewModel extends ViewModel {
             }
         }
         // 2. 播放對應表情影片
+        String fullEmotionKey;
         if (statusUpdate.getStatus().equals("speaking") && statusUpdate.getEmotion() != null) {
             // Speaking 狀態且有情緒時使用情緒表情
-            String fullEmotionKey = getFullEmotionKey(statusUpdate.getEmotion());
-            emotionLiveData.setValue(fullEmotionKey);
+            fullEmotionKey = getFullEmotionKey(statusUpdate.getEmotion());
         } else {
             // 其他狀態使用狀態對應的表情
-            String fullEmotionKey = getFullEmotionKey(statusUpdate.getStatus());
-            emotionLiveData.setValue(fullEmotionKey);
+            fullEmotionKey = getFullEmotionKey(statusUpdate.getStatus());
         }
+        emotionLiveData.setValue(fullEmotionKey);
 
         switch (statusUpdate.getStatus()) {
             case "idling":
@@ -213,17 +205,5 @@ public class RobotViewModel extends ViewModel {
 
         // Force garbage collection to release any lingering resources
         System.gc();
-    }
-    public void cleanupObservers() {
-        Log.d(TAG, "Cleaning up all observers and listeners");
-
-        // If you have any observers or listeners that were added with observeForever
-        // make sure to remove them here to prevent memory leaks
-
-        // Example:
-        // if (someForeverObserver != null) {
-        //     someLiveData.removeObserver(someForeverObserver);
-        //     someForeverObserver = null;
-        // }
     }
 }

@@ -21,7 +21,6 @@ import java.util.Map;
 
 public class VideoFragment extends Fragment {
     private static final String TAG = "VideoFragment";
-    private static final String ARG_CHANNEL = "channel";
     private RecordHandler recordHandler;
     private RobotViewModel robotViewModel;
     private SharedViewModel sharedViewModel;
@@ -55,7 +54,7 @@ public class VideoFragment extends Fragment {
         observeEmotionChanges();
         observeTTSState();
         // 開啟第一次對話
-        robotViewModel.setStatus("thinking", "hi");
+        robotViewModel.setStatus(new StatusUpdate("thinking", "hi"));
         return view;
     }
 

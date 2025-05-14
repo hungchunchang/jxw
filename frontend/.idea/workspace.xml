@@ -19,72 +19,21 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6943351d-c8c7-45cd-bb1f-a35e6e04512e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../backend/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/data/conversations/c.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/data/conversations/d.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/data/conversations/d.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/data/conversations/o.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/data/conversations/q.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/data/conversations/x.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/sha1-checksums.bin" afterDir="false" />
+    <list default="true" id="6943351d-c8c7-45cd-bb1f-a35e6e04512e" name="Changes" comment="updated: remove login system">
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/checksums/checksums.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidPluginAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxVersionAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibs$BundleAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibs$CameraxLibraryAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibs$CoreLibraryAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibs$EspressoLibraryAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibs$ExtLibraryAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibs$JetbrainsKotlinPluginAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibs$JetbrainsPluginAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibs$KotlinLibraryAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibs$LifecycleLibraryAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibs$PluginAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibs$VersionAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidPluginAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxVersionAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$BundleAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$CameraxLibraryAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$CoreLibraryAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$EspressoLibraryAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$ExtLibraryAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$JetbrainsKotlinPluginAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$JetbrainsPluginAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$KotlinLibraryAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$LifecycleLibraryAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$PluginAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$VersionAccessors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/metadata.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/sources/org/gradle/accessors/dm/LibrariesForLibs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/647a7a03fc92bfc0b8909c4607554d491e2ed408/sources/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/executionHistory/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/fileHashes/resourceHashesCache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/gc.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2025_4_9,_11_39 AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2025_4_9__11_39AM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/fragment/SettingFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/fragment/SettingFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/util/HttpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/util/HttpHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/network_security_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/fragment/UserFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/fragment/UserFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/fragment/VideoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/fragment/VideoFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/repository/DataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/repository/DataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/viewmodel/RobotViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/viewmodel/RobotViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/viewmodel/RobotViewModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jxw/viewmodel/RobotViewModelFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +57,7 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Xiao2" type="f1a62948:ProjectNode" />
+                <item name="jxw" type="f1a62948:ProjectNode" />
               </path>
             </expand>
             <select />
@@ -289,7 +238,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="合併了 StatusUpdate 和 ActionResponse.java, 留下 StatusUpdate.&#10;&#10;確保 VideoFragment.java 只有從 RobotViewModel 觀察 UI相關的更新，而不是直接觀察 StatusUpdate. &#10;&#10;此外，更新了結束對話的機制，RobotViewModel中新增了 ending 的狀態， 會改變 is_ending,並且在結尾語句結束之後，會揮手，揮完手之後，會透過 callback 將狀態設定為 reset，並且把 is_ending = false." />
     <MESSAGE value="合併了 StatusUpdate 和 ActionResponse.java, 留下 StatusUpdate.&#10;&#10;確保 VideoFragment.java 只有從 RobotViewModel 觀察 UI相關的更新，而不是直接觀察 StatusUpdate.&#10;&#10;此外，更新了結束對話的機制，RobotViewModel中新增了 ending 的狀態， 會改變 is_ending,並且在結尾語句結束之後，會揮手，揮完手之後，會透過 callback 將狀態設定為 reset，並且把 is_ending = false." />
-    <option name="LAST_COMMIT_MESSAGE" value="合併了 StatusUpdate 和 ActionResponse.java, 留下 StatusUpdate.&#10;&#10;確保 VideoFragment.java 只有從 RobotViewModel 觀察 UI相關的更新，而不是直接觀察 StatusUpdate.&#10;&#10;此外，更新了結束對話的機制，RobotViewModel中新增了 ending 的狀態， 會改變 is_ending,並且在結尾語句結束之後，會揮手，揮完手之後，會透過 callback 將狀態設定為 reset，並且把 is_ending = false." />
+    <MESSAGE value="updated: remove login system" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated: remove login system" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">

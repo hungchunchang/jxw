@@ -31,11 +31,11 @@ public class DataRepository {
         this.httpHandler = httpHandler;
         this.executorService = executorService;
     }
-    public void setUserInfo(String userName, String userId, String personality, String channel){
+    public void setUserInfo(String userName, String userId){
         this.userName = userName;
         this.userId = userId;
-        this.personality = personality;
-        this.channel = channel;
+        this.personality = "e";
+        this.channel = "chat";
         Log.d(TAG, "user info set");
     }
 

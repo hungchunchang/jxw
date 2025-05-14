@@ -21,6 +21,11 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.jxw.R;
 import com.example.jxw.viewmodel.RobotViewModel;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.UUID;
+
 public class UserFragment extends Fragment {
     private RobotViewModel robotViewModel;
     private Button startButton;
@@ -89,32 +94,43 @@ public class UserFragment extends Fragment {
     }
 
     // 開始按鈕的點擊邏輯
-    // 開始按鈕的點擊邏輯
     private void handleStartButtonClick() {
         // 清除動畫並隱藏按鈕
         startButton.clearAnimation();
         startButton.setVisibility(View.GONE);
 
-        // 直接從 SharedPreferences 中獲取設置的數據
+        // 獲取 SharedPreferences
         SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("user_data", Context.MODE_PRIVATE);
-        String userId = sharedPreferences.getString("user_id", "N/A");
-        String username = sharedPreferences.getString("username", "N/A");
-        String selectedPersonality = sharedPreferences.getString("selected_personality", "ENFP");
-        String selectedChatType = sharedPreferences.getString("selected_chat_type", "chat");
 
-        // 檢查數據是否存在
-        if (!userId.equals("N/A") && !username.equals("N/A") && !selectedPersonality.equals("N/A") && !selectedChatType.equals("N/A")) {
-            // 將這些資訊發送到後端
-            robotViewModel.setInitialData(username, userId, selectedPersonality, selectedChatType);
+        // 檢查是否已有用戶ID，沒有則生成新的
+        String userId = sharedPreferences.getString("user_id", null);
+        if (userId == null) {
+            // 為新使用者創建唯一 ID
+            userId = UUID.randomUUID().toString();
 
-            // 顯示提示
-            Toast.makeText(requireContext(), "數據已發送", Toast.LENGTH_SHORT).show();
-            transactionToVideo();
+            // 創建日期格式
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+            // 獲取當前日期時間
+            String createdDate = sdf.format(new Date());
 
-        } else {
-            Toast.makeText(requireContext(), "請先在設置頁面填寫完整信息", Toast.LENGTH_SHORT).show();
+            // 儲存使用者資料到 SharedPreferences
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("user_id", userId);
+            editor.putString("created_date", createdDate);
+            editor.apply();
+
+            Log.d("UserFragment", "新用戶ID已生成: " + userId);
         }
 
+        // 使用訪客用戶名代替需要輸入的用戶名
+        String username = "visitor_" + userId.substring(0, 8);
+
+        // 將這些資訊發送到後端 - 移除 personality 和 channel 參數
+        robotViewModel.setInitialData(username, userId);
+
+        // 顯示提示
+        Toast.makeText(requireContext(), "已連接到磯永吉小屋互動系統", Toast.LENGTH_SHORT).show();
+        transactionToVideo();
     }
     private void transactionToVideo(){
         // 使用 FragmentTransaction 進行跳轉到 VideoFragment
