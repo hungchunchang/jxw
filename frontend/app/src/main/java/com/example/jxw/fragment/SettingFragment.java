@@ -21,7 +21,7 @@ import com.example.jxw.R;
 public class SettingFragment extends Fragment {
 
     private String selectedPersonality = "INFP";  // 默認人格
-    private String selectedChatType = "biography";     // 默認聊天模式
+    private String selectedChatType = "chat";     // 默認聊天模式
     private Button selectedPersonalityButton;     // 已選擇的人格按鈕
     private Button selectedChatTypeButton;        // 已選擇的聊天模式按鈕
     private SharedPreferences sharedPreferences;

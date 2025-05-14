@@ -120,7 +120,7 @@ def jxw_bot(user_name, question):
             context=history, 
             turns=user_data.get("turns", 0)
         )
-    elif(turns>6):
+    elif(turns>8):
         # 如果對話結束，返回結束訊息
         return {
             "question": "謝謝你們今天來參觀！期待下次再見！",

@@ -24,8 +24,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutorService;
 
 public class HttpHandler implements HttpHandlerInterface {
-    //"http://192.168.111.175:8080/api/";
-    private static final String BASE_URL = "https://8b9b-140-112-92-133.ngrok-free.app/api/";
+
+    private static final String BASE_URL = "http://140.112.92.133:8080/api/";
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private final ExecutorService executorService;
     private DataRepository dataRepository;
@@ -149,14 +149,15 @@ public class HttpHandler implements HttpHandlerInterface {
         JSONObject jsonResponse = new JSONObject(jsonString);
 
         String status = "speaking";
-        //這邊用reset的話，會直接跳走，所以要把onTTsEnded再回到主頁
+        //這邊用reset的話，會直接跳走，所以要把 onTTsEnded 再回到主頁
         if(jsonResponse.optBoolean("is_ended")){
             status = "ending";
         }
         Log.d(TAG,"Status is"+status);
 
         String question = jsonResponse.optString("question", "");
-        String emotion = jsonResponse.optString("emotion", "neutral");
+        String emotion = jsonResponse.optString("emotion", "");
+        Log.d(TAG, "message updating with message: "+ question);
 
         return new StatusUpdate(status, question, emotion);
     }
