@@ -35,7 +35,6 @@ public class RobotViewModel extends ViewModel {
         LiveData<StatusUpdate> statusLiveData = dataRepository.getStatusLiveData();
         statusLiveData.observeForever(statusUpdate -> {
             if (statusUpdate != null) {
-                // 调用自己的 setStatus 方法来处理状态更新
                 setStatus(statusUpdate);
             }
         });

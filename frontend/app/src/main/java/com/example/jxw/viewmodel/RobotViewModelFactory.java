@@ -13,24 +13,20 @@ import java.util.HashMap;
 
 public class RobotViewModelFactory implements ViewModelProvider.Factory {
     private final NuwaRobotAPI mRobotAPI;
-    private final HttpHandlerInterface httpHandler;
     private final DataRepository dataRepository;
     private final CameraHandler cameraHandler;
-    private final HashMap emotionVideoMap;
 
     public RobotViewModelFactory(NuwaRobotAPI mRobotAPI, HttpHandlerInterface httpHandler, DataRepository dataRepository, CameraHandler cameraHandler, HashMap emotionVideoMap) {
         this.mRobotAPI = mRobotAPI;
-        this.httpHandler = httpHandler;
         this.dataRepository = dataRepository;
         this.cameraHandler = cameraHandler;
-        this.emotionVideoMap = emotionVideoMap;
     }
 
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass.isAssignableFrom(RobotViewModel.class))
-            return (T) new RobotViewModel(mRobotAPI, dataRepository, cameraHandler, emotionVideoMap);
+            return (T) new RobotViewModel(mRobotAPI, dataRepository, cameraHandler);
         throw new IllegalArgumentException("Unknown ViewModel class");
     }
 }
