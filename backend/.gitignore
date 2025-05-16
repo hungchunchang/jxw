@@ -2,3 +2,7 @@
 .DS_Store
 .DS_Store?
 backend/data/**
+access.log
+error.log
+__pycache__
+
