@@ -1,0 +1,351 @@
+[2025-05-14 15:01:05 +0800] [4156278] [INFO] Starting gunicorn 23.0.0
+[2025-05-14 15:01:05 +0800] [4156278] [INFO] Listening at: http://0.0.0.0:8080 (4156278)
+[2025-05-14 15:01:05 +0800] [4156278] [INFO] Using worker: sync
+[2025-05-14 15:01:05 +0800] [4156279] [INFO] Booting worker with pid: 4156279
+[2025-05-14 15:01:05 +0800] [4156280] [INFO] Booting worker with pid: 4156280
+[2025-05-14 15:01:05 +0800] [4156281] [INFO] Booting worker with pid: 4156281
+[2025-05-14 15:02:36 +0800] [4156280] [INFO] Worker exiting (pid: 4156280)
+[2025-05-14 15:02:36 +0800] [4156279] [INFO] Worker exiting (pid: 4156279)
+[2025-05-14 15:02:36 +0800] [4156281] [INFO] Worker exiting (pid: 4156281)
+[2025-05-14 15:02:36 +0800] [4156278] [INFO] Handling signal: term
+[2025-05-14 15:02:36 +0800] [4156278] [ERROR] Worker (pid:4156279) was sent SIGTERM!
+[2025-05-14 15:02:36 +0800] [4156278] [ERROR] Worker (pid:4156280) was sent SIGTERM!
+[2025-05-14 15:02:36 +0800] [4156278] [INFO] Shutting down: Master
+[2025-05-14 15:02:37 +0800] [4157652] [INFO] Starting gunicorn 23.0.0
+[2025-05-14 15:02:37 +0800] [4157652] [INFO] Listening at: http://0.0.0.0:8080 (4157652)
+[2025-05-14 15:02:37 +0800] [4157652] [INFO] Using worker: sync
+[2025-05-14 15:02:37 +0800] [4157653] [INFO] Booting worker with pid: 4157653
+[2025-05-14 15:02:37 +0800] [4157654] [INFO] Booting worker with pid: 4157654
+[2025-05-14 15:02:37 +0800] [4157655] [INFO] Booting worker with pid: 4157655
+[2025-05-14 15:50:27 +0800] [4157652] [CRITICAL] WORKER TIMEOUT (pid:4157654)
+[2025-05-14 15:50:27 +0800] [4157654] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 274, in parse
+    line, rbuf = self.read_line(unreader, buf, self.limit_request_line)
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 326, in read_line
+    self.get_data(unreader, buf)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+    ~~~~~~~~^^^
+SystemExit: 1
+[2025-05-14 15:50:27 +0800] [4157654] [INFO] Worker exiting (pid: 4157654)
+[2025-05-14 15:50:27 +0800] [6402] [INFO] Booting worker with pid: 6402
+[2025-05-14 15:50:37 +0800] [4157652] [CRITICAL] WORKER TIMEOUT (pid:4157655)
+[2025-05-14 15:50:37 +0800] [4157655] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 274, in parse
+    line, rbuf = self.read_line(unreader, buf, self.limit_request_line)
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 326, in read_line
+    self.get_data(unreader, buf)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+    ~~~~~~~~^^^
+SystemExit: 1
+[2025-05-14 15:50:37 +0800] [4157655] [INFO] Worker exiting (pid: 4157655)
+[2025-05-14 15:50:37 +0800] [6542] [INFO] Booting worker with pid: 6542
+[2025-05-14 15:50:47 +0800] [4157652] [CRITICAL] WORKER TIMEOUT (pid:4157653)
+[2025-05-14 15:50:47 +0800] [4157653] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 274, in parse
+    line, rbuf = self.read_line(unreader, buf, self.limit_request_line)
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 326, in read_line
+    self.get_data(unreader, buf)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+    ~~~~~~~~^^^
+SystemExit: 1
+[2025-05-14 15:50:47 +0800] [4157653] [INFO] Worker exiting (pid: 4157653)
+[2025-05-14 15:50:48 +0800] [6697] [INFO] Booting worker with pid: 6697
+[2025-05-15 03:01:42 +0800] [6697] [WARNING] Invalid request from ip=162.142.125.207: Invalid HTTP Version: (2, 0)
+[2025-05-15 05:04:46 +0800] [4157652] [CRITICAL] WORKER TIMEOUT (pid:6402)
+[2025-05-15 05:04:46 +0800] [6402] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 274, in parse
+    line, rbuf = self.read_line(unreader, buf, self.limit_request_line)
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 326, in read_line
+    self.get_data(unreader, buf)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+    ~~~~~~~~^^^
+SystemExit: 1
+[2025-05-15 05:04:46 +0800] [6402] [INFO] Worker exiting (pid: 6402)
+[2025-05-15 05:04:46 +0800] [700246] [INFO] Booting worker with pid: 700246
+[2025-05-15 10:24:46 +0800] [6542] [WARNING] Invalid request from ip=139.162.119.94: Invalid HTTP Version: 'RTSP/1.0'
+[2025-05-15 10:24:47 +0800] [700246] [WARNING] Invalid request from ip=139.162.119.94: Invalid HTTP method: '\x05\x04\x00\x01\x02\x80\x05\x01\x00\x03\ngoogle.com\x00PGET'
+[2025-05-15 10:24:52 +0800] [700246] [WARNING] Invalid request from ip=139.162.119.94: Invalid HTTP request line: ''
+[2025-05-15 10:25:02 +0800] [700246] [WARNING] Invalid request from ip=139.162.119.94: Invalid HTTP request line: 'HELP'
+[2025-05-15 10:25:27 +0800] [6542] [WARNING] Invalid request from ip=139.162.119.94: Invalid HTTP Version: 'SIP/2.0'
+[2025-05-15 11:50:35 +0800] [4157652] [CRITICAL] WORKER TIMEOUT (pid:6542)
+[2025-05-15 11:50:35 +0800] [6542] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 274, in parse
+    line, rbuf = self.read_line(unreader, buf, self.limit_request_line)
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 326, in read_line
+    self.get_data(unreader, buf)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+    ~~~~~~~~^^^
+SystemExit: 1
+[2025-05-15 11:50:35 +0800] [6542] [INFO] Worker exiting (pid: 6542)
+[2025-05-15 11:50:35 +0800] [1055210] [INFO] Booting worker with pid: 1055210
+[2025-05-15 11:50:44 +0800] [4157652] [CRITICAL] WORKER TIMEOUT (pid:6697)
+[2025-05-15 11:50:44 +0800] [6697] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 274, in parse
+    line, rbuf = self.read_line(unreader, buf, self.limit_request_line)
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 326, in read_line
+    self.get_data(unreader, buf)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+    ~~~~~~~~^^^
+SystemExit: 1
+[2025-05-15 11:50:44 +0800] [6697] [INFO] Worker exiting (pid: 6697)
+[2025-05-15 11:50:44 +0800] [1055346] [INFO] Booting worker with pid: 1055346
+[2025-05-15 11:50:55 +0800] [4157652] [CRITICAL] WORKER TIMEOUT (pid:700246)
+[2025-05-15 11:50:55 +0800] [700246] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 274, in parse
+    line, rbuf = self.read_line(unreader, buf, self.limit_request_line)
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 326, in read_line
+    self.get_data(unreader, buf)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+    ~~~~~~~~^^^
+SystemExit: 1
+[2025-05-15 11:50:55 +0800] [700246] [INFO] Worker exiting (pid: 700246)
+[2025-05-15 11:50:56 +0800] [1055511] [INFO] Booting worker with pid: 1055511
+[2025-05-16 04:23:13 +0800] [1055511] [WARNING] Invalid request from ip=167.94.146.63: Invalid HTTP Version: (2, 0)
+[2025-05-16 05:06:41 +0800] [1055511] [WARNING] Invalid request from ip=167.94.138.186: Invalid HTTP Version: (2, 0)
+[2025-05-16 07:58:01 +0800] [4157652] [CRITICAL] WORKER TIMEOUT (pid:1055511)
+[2025-05-16 07:58:01 +0800] [1055511] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 274, in parse
+    line, rbuf = self.read_line(unreader, buf, self.limit_request_line)
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 326, in read_line
+    self.get_data(unreader, buf)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+    ~~~~~~~~^^^
+SystemExit: 1
+[2025-05-16 07:58:01 +0800] [1055511] [INFO] Worker exiting (pid: 1055511)
+[2025-05-16 07:58:01 +0800] [2112310] [INFO] Booting worker with pid: 2112310
+[2025-05-16 07:58:11 +0800] [4157652] [CRITICAL] WORKER TIMEOUT (pid:1055346)
+[2025-05-16 07:58:11 +0800] [1055346] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 274, in parse
+    line, rbuf = self.read_line(unreader, buf, self.limit_request_line)
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 326, in read_line
+    self.get_data(unreader, buf)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+    ~~~~~~~~^^^
+SystemExit: 1
+[2025-05-16 07:58:11 +0800] [1055346] [INFO] Worker exiting (pid: 1055346)
+[2025-05-16 07:58:11 +0800] [2112457] [INFO] Booting worker with pid: 2112457
+[2025-05-16 07:58:21 +0800] [4157652] [CRITICAL] WORKER TIMEOUT (pid:1055210)
+[2025-05-16 07:58:21 +0800] [1055210] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 274, in parse
+    line, rbuf = self.read_line(unreader, buf, self.limit_request_line)
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 326, in read_line
+    self.get_data(unreader, buf)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/hcc/miniforge3/envs/jxw/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+    ~~~~~~~~^^^
+SystemExit: 1
+[2025-05-16 07:58:21 +0800] [1055210] [INFO] Worker exiting (pid: 1055210)
+[2025-05-16 07:58:21 +0800] [2112610] [INFO] Booting worker with pid: 2112610
+[2025-05-16 10:35:05 +0800] [2112310] [WARNING] Invalid request from ip=18.220.154.78: Invalid HTTP request line: 'SSH-2.0-Go'
+[2025-05-16 10:47:49 +0800] [2112610] [WARNING] Invalid request from ip=167.94.145.99: Invalid HTTP Version: (2, 0)
+[2025-05-16 21:29:04 +0800] [4157652] [ERROR] Worker (pid:2112310) was sent SIGKILL! Perhaps out of memory?
+[2025-05-16 21:29:04 +0800] [2846718] [INFO] Booting worker with pid: 2846718
